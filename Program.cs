@@ -1,5 +1,6 @@
 ﻿using ScreenSoundAPI.Modelos;
 using System.Text.Json;
+using ScreenSoundAPI.Filtros;
 
 using (HttpClient cliente = new HttpClient())
 {
@@ -7,7 +8,8 @@ using (HttpClient cliente = new HttpClient())
     {
         string resposta = await cliente.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
         var musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!;
-        musicas[1998].ExibirDetalhesDaMusica();
+        //LinqFilter.FiltrarTodosOsGenerosMusicais(musicas);
+        LinqOrder.ExibirListadeArtistasOrdenados(musicas);
     }
     catch (Exception ex)
     {
