@@ -34,5 +34,17 @@ namespace ScreenSoundAPI.Filtros
             }
         }
 
+        internal static void FiltrarMusicasPorTonalidades(List<Musica> musicas, string tonalidade)
+        {
+            var musicasDoArtista = musicas
+                .Where(musica => musica.Tonalidade!.Equals(tonalidade))
+                .ToList();
+            
+            foreach (var musica in musicasDoArtista)
+            {
+                Console.WriteLine($"{musica.Nome} - {musica.Artista}");
+            }
+        }
+
     }
 }
